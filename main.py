@@ -1,5 +1,43 @@
-print("Library Management System")
+print("===== Library Management System =====")
 
+books = []
+
+print("1 - Add Book")
+print("2 - List Books")
+print("3 - Exit")
+
+option = input("Choose an option: ")
+
+print(option)
+
+if option == "1":
+    title = input("Title: ")
+    author = input("Author: ")
+    year = int(input("Year: "))
+    isbn = input("ISBN: ")
+
+    book = {
+        "title": title,
+        "author": author,
+        "year": year,
+        "isbn": isbn
+    }
+
+    books.append(book)
+
+    print("Book added successfully!")
+
+
+
+elif option == "2":
+    print("Listing books...")
+elif option == "3":
+    print("Bye!")
+else:
+    print("Invalid option.")
+
+
+'''
 books = []
 book = {
         "title": "Harry Potter",
@@ -18,3 +56,4 @@ books.append(book)
 
 for book in books:
     print(book["title"])
+'''
