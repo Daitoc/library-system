@@ -2,58 +2,52 @@ print("===== Library Management System =====")
 
 books = []
 
-print("1 - Add Book")
-print("2 - List Books")
-print("3 - Exit")
+while True:
 
-option = input("Choose an option: ")
+# user choices
 
-print(option)
+    print("1 - Add Book")
+    print("2 - List Books")
+    print("3 - Exit")
 
-if option == "1":
-    title = input("Title: ")
-    author = input("Author: ")
-    year = int(input("Year: "))
-    isbn = input("ISBN: ")
+    option = input("Choose an option: ")
 
-    book = {
-        "title": title,
-        "author": author,
-        "year": year,
-        "isbn": isbn
-    }
+# Add a Book in Library
 
-    books.append(book)
+    if option == "1":
+        title = input("Title: ")
+        author = input("Author: ")
+        year = int(input("Year: "))
+        isbn = input("ISBN: ")
 
-    print("Book added successfully!")
+        book = {
+            "title": title,
+            "author": author,
+            "year": year,
+            "isbn": isbn
+        }
 
+        books.append(book)
 
+        print("\nBook added successfully!\n")
 
-elif option == "2":
-    print("Listing books...")
-elif option == "3":
-    print("Bye!")
-else:
-    print("Invalid option.")
+# Shows the books in library
 
+    elif option == "2":
+        if len(books) == 0:
+            print("\nno books found\n")
+        else:
+            print("\n===== Books =====\n")
+            for book in books:
+                print("Title:", book["title"])
+                print("Author:", book["author"])
+                print("Year:", book["year"])
+                print("ISBN:", book["isbn"])
+                print("\n----------------------\n")
 
-'''
-books = []
-book = {
-        "title": "Harry Potter",
-        "author": "J.K. Rowling",
-        "year": 1997,
-        "isbn": "978..."
-    }
-books.append(book)
-book = {
-        "title": "The Hobbit",
-        "author": "J.R.R Tolkien",
-        "year": 1937,
-        "isbn": "978..."
-    }
-books.append(book)
-
-for book in books:
-    print(book["title"])
-'''
+        
+    elif option == "3":
+        print("Bye!")
+        break
+    else:
+        print("\nInvalid option.\n")
