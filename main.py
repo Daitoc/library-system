@@ -30,6 +30,25 @@ def list_books(books):
             print("ISBN:", book["isbn"])
             print("\n----------------------\n")
 
+def search_book(books):
+# Search for the book that is on the list
+    
+    search = input("Enter the title: ")
+    found = False
+
+    for book in books:
+        if search == book["title"]:
+            print("This is the book you are looking for:", book["title"])
+            found = True
+            break
+        
+    if found == False:
+        print("\nBook not found.\n")
+        
+        
+
+
+
 print("===== Library Management System =====")
 
 books = []
@@ -41,7 +60,8 @@ while True:
 
     print("1 - Add Book")
     print("2 - List Books")
-    print("3 - Exit")
+    print("3 - Search Books")
+    print("4 - Exit")
 
     option = input("Choose an option: ")
 
@@ -54,8 +74,9 @@ while True:
 
     elif option == "2":
         list_books(books)
-        
     elif option == "3":
+        search_book(books)
+    elif option == "4":
         print("Bye!")
         break
     else:
