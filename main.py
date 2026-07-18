@@ -66,7 +66,32 @@ def remove_book(books):
         
     if not found:
         print("\nBook not found.\n")
-    
+
+def edit_book(books):
+# Edit a book from the library
+
+    search = input("Enter the title of the book that you want to edit: ")
+    found = False
+    for book in books:
+        if search == book["title"]:
+            found = True
+            new_title = input("New title: ")
+            book["title"] = new_title
+
+            new_author = input("New author: ")
+            book["author"] = new_author
+
+            new_year = int(input("New year: "))
+            book["year"] = new_year
+
+            new_isbn = input("New ISBN: ")
+            book["isbn"] = new_isbn
+
+            print("Book updated successfully!")
+            break
+        
+    if not found:
+        print("\nBook not found.\n")
         
 
 
