@@ -1,3 +1,10 @@
+import json
+
+def save_books(books):
+    with open("library.json", "w") as file:
+        json.dump(books, file, indent=4)
+
+
 def add_book(books):
 # Add a book to the library
 
@@ -15,6 +22,7 @@ def add_book(books):
     books.append(book)
 
     print("\nBook added successfully!\n")
+    save_books(books)
 
 def list_books(books):
 # Shows the books that are in the library
@@ -95,7 +103,7 @@ def edit_book(books):
         
 
 
-
+# Start of the program
 print("===== Library Management System =====")
 
 books = []
