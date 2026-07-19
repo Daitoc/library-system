@@ -4,6 +4,13 @@ def save_books(books):
     with open("library.json", "w") as file:
         json.dump(books, file, indent=4)
 
+def load_books():
+    try:
+        with open("library.json", "r") as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return[]
+
 
 def add_book(books):
 # Add a book to the library
@@ -21,8 +28,8 @@ def add_book(books):
     }
     books.append(book)
 
-    print("\nBook added successfully!\n")
     save_books(books)
+    print("\nBook added successfully!\n")
 
 def list_books(books):
 # Shows the books that are in the library
@@ -69,6 +76,7 @@ def remove_book(books):
         if search == book["title"]:
             found = True
             books.remove(book)
+            save_books(books)
             print("Book removed successfully!")
             break
         
@@ -95,6 +103,7 @@ def edit_book(books):
             new_isbn = input("New ISBN: ")
             book["isbn"] = new_isbn
 
+            save_books(books)
             print("Book updated successfully!")
             break
         
@@ -106,7 +115,7 @@ def edit_book(books):
 # Start of the program
 print("===== Library Management System =====")
 
-books = []
+books = load_books()
 
 
 while True:
@@ -117,7 +126,8 @@ while True:
     print("2 - List Books")
     print("3 - Search Books")
     print("4 - Remove Book")
-    print("5 - Exit")
+    print("5 - Edit_book")
+    print("6 - Exit")
 
     option = input("Choose an option: ")
 
@@ -137,8 +147,11 @@ while True:
     elif option == "4":
         remove_book(books)
 
-# Exit the program
     elif option == "5":
+        edit_book(books)
+
+# Exit the program
+    elif option == "6":
         print("Bye!")
         break
 
