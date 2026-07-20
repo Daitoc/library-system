@@ -20,6 +20,11 @@ def add_book(books):
     year = int(input("Year: "))
     isbn = input("ISBN: ")
 
+    for book in books:
+        if book["isbn"] == isbn:
+            print("This ISBN already exists.")
+            return
+
     book = {
         "title": title,
         "author": author,
@@ -48,11 +53,11 @@ def list_books(books):
 def search_book(books):
 # Search for a book in the library
     
-    search = input("Enter the title: ")
+    search = input("Enter the title: ").lower()
     found = False
 
     for book in books:
-        if search == book["title"]:
+        if search == book["title"].lower():
             found = True
             print("\n===== Book Found =====\n")
             print("Book found: ")
@@ -69,11 +74,11 @@ def search_book(books):
 def remove_book(books):
 # Remove the book that is on the list
 
-    search = input("Enter the title of the book you want to remove: ")
+    search = input("Enter the title of the book you want to remove: ").lower()
     found = False
 
     for book in books:
-        if search == book["title"]:
+        if search == book["title"].lower():
             found = True
             books.remove(book)
             save_books(books)
@@ -86,10 +91,10 @@ def remove_book(books):
 def edit_book(books):
 # Edit a book from the library
 
-    search = input("Enter the title of the book that you want to edit: ")
+    search = input("Enter the title of the book that you want to edit: ").lower()
     found = False
     for book in books:
-        if search == book["title"]:
+        if search == book["title"].lower():
             found = True
             new_title = input("New title: ")
             book["title"] = new_title
@@ -126,7 +131,7 @@ while True:
     print("2 - List Books")
     print("3 - Search Books")
     print("4 - Remove Book")
-    print("5 - Edit_book")
+    print("5 - Edit book")
     print("6 - Exit")
 
     option = input("Choose an option: ")
