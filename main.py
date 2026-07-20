@@ -80,10 +80,19 @@ def remove_book(books):
     for book in books:
         if search == book["title"].lower():
             found = True
-            books.remove(book)
-            save_books(books)
-            print("Book removed successfully!")
-            break
+            confirmation = input("Are you sure you want to remove this book? (Y/N)").lower()
+            if confirmation == "y":
+                books.remove(book)
+                save_books(books)
+                print("Book removed successfully!")
+                break
+            elif confirmation == "n":
+                print("Operation cancelled")
+                break
+            else:
+                print("Invalid option.")
+                return
+
         
     if not found:
         print("\nBook not found.\n")
