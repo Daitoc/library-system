@@ -1,3 +1,4 @@
+#Save books in thew library
 import json
 
 def save_books(books):
@@ -10,14 +11,21 @@ def load_books():
             return json.load(file)
     except FileNotFoundError:
         return[]
-
+    
+def get_valid_year(message):
+    while True:
+        try:
+            year = int(input(message))
+            return year
+        except ValueError:
+            print("Invalid year. Please enter a number.")
 
 def add_book(books):
 # Add a book to the library
 
     title = input("Title: ")
     author = input("Author: ")
-    year = int(input("Year: "))
+    year = get_valid_year("Year: ")
     isbn = input("ISBN: ")
 
     for book in books:
@@ -111,7 +119,7 @@ def edit_book(books):
             new_author = input("New author: ")
             book["author"] = new_author
 
-            new_year = int(input("New year: "))
+            new_year = get_valid_year("New year: ")
             book["year"] = new_year
 
             new_isbn = input("New ISBN: ")
@@ -123,7 +131,6 @@ def edit_book(books):
         
     if not found:
         print("\nBook not found.\n")
-        
 
 
 # Start of the program
